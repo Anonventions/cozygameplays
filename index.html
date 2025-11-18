@@ -45,7 +45,7 @@
 
         #cinematicFade.fade-in {
             opacity: 1;
-            pointer-events: all;
+            /* Don't block pointer events - let end game screen be clickable */
         }
 
         /* End Game Screen */
@@ -56,7 +56,7 @@
             width: 100%;
             height: 100%;
             background: black;
-            z-index: 19000;
+            z-index: 21000;
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -1663,6 +1663,7 @@
         };
 
         // Simple sound player with mute check
+        let audioContext = null;
         function playSound(type) {
             if (isMuted) return;
             
@@ -1678,9 +1679,10 @@
             try {
                 const audio = new Audio(sounds[type]);
                 audio.volume = 0.3;
-                audio.play().catch(e => console.log('Audio play prevented:', e));
+                // Silently fail if autoplay is blocked
+                audio.play().catch(() => {});
             } catch (e) {
-                console.log('Sound error:', e);
+                // Silently handle errors
             }
         }
 
@@ -1693,10 +1695,11 @@
                     ambientAudio = new Audio(sounds.ambient);
                     ambientAudio.volume = 0.1;
                     ambientAudio.loop = true;
-                    ambientAudio.play().catch(e => console.log('Ambient prevented:', e));
+                    // Silently fail if autoplay blocked
+                    ambientAudio.play().catch(() => {});
                     ambientPlaying = true;
                 } catch (e) {
-                    console.log('Ambient error:', e);
+                    // Silently handle error
                 }
             }
         }
@@ -3117,69 +3120,100 @@
             const herSprite = document.getElementById('herSprite');
             const overlay = document.getElementById('kissOverlay');
             const hint = document.getElementById('proximityHint');
+            const cinematicFade = document.getElementById('cinematicFade');
+            const gameBg = document.getElementById('gameBg');
             
             hint.classList.remove('show');
             clearInterval(himIdleInterval);
             
-            let kissFrame = 1;
-            const kissInterval = setInterval(() => {
-                himSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/him/beingkissed${kissFrame}.png`;
-                herSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/kiss${kissFrame}_right.png`;
+            // Fade to black with zoom in effect
+            cinematicFade.classList.remove('fade-out');
+            cinematicFade.classList.add('fade-in');
+            
+            // Zoom in on characters
+            gameBg.style.transition = 'transform 2s ease';
+            gameBg.style.transform = 'scale(1.5)';
+            
+            setTimeout(() => {
+                // Fade back in to show close-up
+                cinematicFade.classList.remove('fade-in');
+                cinematicFade.classList.add('fade-out');
                 
-                if (kissFrame === 2) {
-                    overlay.classList.add('active');
-                    for (let i = 0; i < 10; i++) {
-                        setTimeout(() => {
-                            const him = document.getElementById('him');
-                            const angle = (Math.PI * 2 * i) / 10;
-                            const radius = 40 + Math.random() * 20;
-                            const offsetX = Math.cos(angle) * radius;
-                            const offsetY = Math.sin(angle) * radius;
-                            createEffect('heart', 
-                                him.offsetLeft + 42 + offsetX, 
-                                him.offsetTop - 30 + offsetY);
-                        }, i * 130);
-                    }
-                }
-                
-                kissFrame++;
-                if (kissFrame > 3) {
-                    clearInterval(kissInterval);
+                let kissFrame = 1;
+                const kissInterval = setInterval(() => {
+                    himSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/him/beingkissed${kissFrame}.png`;
+                    herSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/kiss${kissFrame}_right.png`;
                     
-                    setTimeout(() => {
-                        overlay.classList.remove('active');
-                        himSprite.src = 'https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/him/idle1.png';
-                        herSprite.src = 'https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/smile_front.png';
-                        
-                        // Only complete quest and show full message on first kiss
-                        if (!skipQuestCompletion) {
-                            showDialog("Thank you for everything, my beautiful girl. I love you so much! Now we can rest together... 💕💕💕", 'him', false);
-                            completeQuest('kiss');
-                            
-                            const quest = quests.find(q => q.id === 'kiss');
-                            if (quest) {
-                                addXP(quest.xp);
-                                addLove(30);
-                            }
-                            unlockAchievement('first_kiss');
-                            
-                            checkAllQuestsComplete();
-                        } else {
-                            // For repeat kisses, just add some love
-                            addLove(5);
+                    if (kissFrame === 2) {
+                        overlay.classList.add('active');
+                        for (let i = 0; i < 10; i++) {
+                            setTimeout(() => {
+                                const him = document.getElementById('him');
+                                const angle = (Math.PI * 2 * i) / 10;
+                                const radius = 40 + Math.random() * 20;
+                                const offsetX = Math.cos(angle) * radius;
+                                const offsetY = Math.sin(angle) * radius;
+                                createEffect('heart', 
+                                    him.offsetLeft + 42 + offsetX, 
+                                    him.offsetTop - 30 + offsetY);
+                            }, i * 130);
                         }
+                    }
+                    
+                    kissFrame++;
+                    if (kissFrame > 3) {
+                        clearInterval(kissInterval);
                         
                         setTimeout(() => {
-                            if (!skipQuestCompletion) {
-                                hideDialog();
-                            }
-                            gameState.kissAnimating = false;
-                            gameState.canMove = true;
-                            startHimIdleAnimation();
-                        }, skipQuestCompletion ? 500 : 3500);
-                    }, 1200);
-                }
-            }, 750);
+                            // Fade to black again before zooming out
+                            cinematicFade.classList.remove('fade-out');
+                            cinematicFade.classList.add('fade-in');
+                            
+                            setTimeout(() => {
+                                overlay.classList.remove('active');
+                                himSprite.src = 'https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/him/idle1.png';
+                                herSprite.src = 'https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/smile_front.png';
+                                
+                                // Zoom back out
+                                gameBg.style.transform = 'scale(1)';
+                                
+                                setTimeout(() => {
+                                    // Fade back in to normal view
+                                    cinematicFade.classList.remove('fade-in');
+                                    cinematicFade.classList.add('fade-out');
+                                    
+                                    // Only complete quest and show full message on first kiss
+                                    if (!skipQuestCompletion) {
+                                        showDialog("Thank you for everything, my beautiful girl. I love you so much! Now we can rest together... 💕💕💕", 'him', false);
+                                        completeQuest('kiss');
+                                        
+                                        const quest = quests.find(q => q.id === 'kiss');
+                                        if (quest) {
+                                            addXP(quest.xp);
+                                            addLove(30);
+                                        }
+                                        unlockAchievement('first_kiss');
+                                        
+                                        checkAllQuestsComplete();
+                                    } else {
+                                        // For repeat kisses, just add some love
+                                        addLove(5);
+                                    }
+                                    
+                                    setTimeout(() => {
+                                        if (!skipQuestCompletion) {
+                                            hideDialog();
+                                        }
+                                        gameState.kissAnimating = false;
+                                        gameState.canMove = true;
+                                        startHimIdleAnimation();
+                                    }, skipQuestCompletion ? 500 : 3500);
+                                }, 1000);
+                            }, 1500);
+                        }, 1500);
+                    }
+                }, 800);
+            }, 2000);
         }
 
         function checkAllQuestsComplete() {
@@ -3234,10 +3268,25 @@
                             }
                         },
                         { 
-                            text: 'No 😤', 
+                            text: 'Not yet 😤', 
                             class: 'mean',
                             response: "Noooooooo I didn't put my podcast yetttt",
                             callback: () => {
+                                handleSleepRefusal();
+                            }
+                        },
+                        { 
+                            text: 'Not now ❌', 
+                            class: 'sarcastic',
+                            response: "Maybe later, I want to explore more!",
+                            callback: () => {
+                                showDialog("Alright, take your time princess 💕", 'him', false);
+                                setTimeout(hideDialog, 2500);
+                            }
+                        }
+                    ]);
+                }, 500);
+            }, 2500);
                                 handleSleepRefusal();
                             }
                         }
