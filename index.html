@@ -2898,13 +2898,15 @@
                 gameState.herDirection = newDirection;
                 gameState.frameCounter++;
                 
-                // Cycle between 1 and 2 for walk frames (walk1.png and walk2.png)
+                // Cycle between 1 and 2 for walk frames (walk.png and walk2.png)
                 if (gameState.frameCounter % 10 === 0) {
                     gameState.walkFrame = gameState.walkFrame === 1 ? 2 : 1;
                 }
                 
                 // Always use walk frames when moving
-                herSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/${newDirection}_walk${gameState.walkFrame}.png`;
+                // Frame 1 uses just "_walk.png", frame 2 uses "_walk2.png"
+                const frameNum = gameState.walkFrame === 1 ? '' : '2';
+                herSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/${newDirection}_walk${frameNum}.png`;
             } else {
                 gameState.walkFrame = 1;
                 gameState.frameCounter = 0;
