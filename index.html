@@ -2,7 +2,7 @@
 <html lang="en">
 <head> 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CozyBeds 💕 - Romance RPG</title>
     <style>
         @font-face {
@@ -1459,6 +1459,213 @@
             background: linear-gradient(135deg, #F48FB1, #EC407A);
             transform: scale(1.05);
         }
+
+        /* Mobile Touch Controls */
+        #touchControls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1500;
+            display: none;
+        }
+
+        .touch-joystick {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(198,160,246,0.3), rgba(157,129,204,0.5));
+            border: 3px solid rgba(210,180,230,0.6);
+            border-radius: 50%;
+            position: relative;
+            touch-action: none;
+        }
+
+        .touch-joystick-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(248,187,208,0.9), rgba(244,143,177,0.9));
+            border: 3px solid rgba(255,224,230,0.8);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: none;
+            box-shadow: 0 5px 15px rgba(248,187,208,0.4);
+        }
+
+        #touchActionBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(248,187,208,0.95), rgba(244,143,177,0.95));
+            border: 3px solid rgba(255,224,230,0.8);
+            border-radius: 50%;
+            font-size: 36px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1500;
+            box-shadow: 0 5px 20px rgba(248,187,208,0.5);
+            touch-action: manipulation;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 900px) {
+            #touchControls {
+                display: block;
+            }
+
+            #touchActionBtn {
+                display: flex;
+            }
+
+            #gameContainer {
+                transform-origin: center center;
+            }
+
+            #room {
+                transform-origin: center center;
+            }
+
+            #statsPanel {
+                width: 280px;
+                height: 240px;
+                top: 15px;
+                right: 15px;
+            }
+
+            #inventory {
+                width: 240px;
+                height: 140px;
+                bottom: 100px;
+                right: 15px;
+            }
+
+            #questIndicator {
+                width: 300px;
+                height: 380px;
+                top: 180px;
+                left: 15px;
+            }
+
+            #settingsBtn {
+                width: 50px;
+                height: 50px;
+                top: 15px;
+                left: 15px;
+                font-size: 24px;
+            }
+
+            #settingsPanel {
+                width: 90%;
+                max-width: 450px;
+            }
+
+            #activityPanel {
+                width: 90%;
+                max-width: 550px;
+            }
+
+            #itemInfoPanel {
+                width: 90%;
+                max-width: 450px;
+            }
+
+            #dialogueChoices {
+                width: 90%;
+                max-width: 700px;
+                padding: 0 30px;
+            }
+
+            #dialogueChoices.show {
+                bottom: 280px;
+            }
+
+            #textboxContainer {
+                width: 90%;
+                max-width: 700px;
+            }
+
+            #textboxContainer.show {
+                bottom: 15px;
+            }
+
+            .choice-btn {
+                font-size: 14px;
+                padding: 12px 20px 12px 60px;
+            }
+
+            .choice-btn::before {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            #statsPanel {
+                width: 240px;
+                height: 200px;
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+            }
+
+            #inventory {
+                width: 200px;
+                height: 120px;
+                bottom: 90px;
+                right: 10px;
+            }
+
+            .inventory-slot {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            #questIndicator {
+                width: 260px;
+                height: 320px;
+                top: 140px;
+                left: 10px;
+                font-size: 13px;
+            }
+
+            #settingsBtn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            #touchControls {
+                bottom: 15px;
+                left: 15px;
+            }
+
+            .touch-joystick {
+                width: 130px;
+                height: 130px;
+            }
+
+            #touchActionBtn {
+                width: 70px;
+                height: 70px;
+                font-size: 30px;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            #dialogueChoices {
+                padding: 0 20px;
+            }
+
+            .choice-btn {
+                font-size: 13px;
+                padding: 10px 15px 10px 50px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1668,6 +1875,16 @@
 
     <!-- Dialogue Choices -->
     <div id="dialogueChoices"></div>
+
+    <!-- Touch Controls for Mobile -->
+    <div id="touchControls">
+        <div class="touch-joystick" id="joystick">
+            <div class="touch-joystick-button" id="joystickButton"></div>
+        </div>
+    </div>
+    
+    <!-- Touch Action Button -->
+    <div id="touchActionBtn">👆</div>
 
     <!-- Quest Indicator -->
     <div id="questIndicator">
@@ -2919,6 +3136,324 @@
             requestAnimationFrame(updateMovement);
         }
         updateMovement();
+
+        // Touch Controls for Mobile
+        let touchJoystickActive = false;
+        let joystickCenterX = 0;
+        let joystickCenterY = 0;
+        let touchMoveVector = { x: 0, y: 0 };
+
+        function initTouchControls() {
+            const joystick = document.getElementById('joystick');
+            const joystickButton = document.getElementById('joystickButton');
+            const actionBtn = document.getElementById('touchActionBtn');
+
+            if (!joystick) return;
+
+            // Joystick touch handlers
+            joystick.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                touchJoystickActive = true;
+                const rect = joystick.getBoundingClientRect();
+                joystickCenterX = rect.left + rect.width / 2;
+                joystickCenterY = rect.top + rect.height / 2;
+            });
+
+            joystick.addEventListener('touchmove', (e) => {
+                if (!touchJoystickActive) return;
+                e.preventDefault();
+                
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - joystickCenterX;
+                const deltaY = touch.clientY - joystickCenterY;
+                
+                const maxDistance = 45;
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                const clampedDistance = Math.min(distance, maxDistance);
+                
+                let angle = Math.atan2(deltaY, deltaX);
+                let moveX = Math.cos(angle) * clampedDistance;
+                let moveY = Math.sin(angle) * clampedDistance;
+                
+                joystickButton.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+                
+                // Convert to movement vector
+                touchMoveVector.x = moveX / maxDistance;
+                touchMoveVector.y = moveY / maxDistance;
+            });
+
+            joystick.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                touchJoystickActive = false;
+                touchMoveVector = { x: 0, y: 0 };
+                joystickButton.style.transform = 'translate(-50%, -50%)';
+            });
+
+            // Action button handler
+            if (actionBtn) {
+                actionBtn.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    handleActionButton();
+                });
+            }
+        }
+
+        function handleActionButton() {
+            playSound('click');
+            
+            // Check if near Him for kiss
+            if (gameState.isNearHim && gameState.allItemsCollected && gameState.itemsCollected.includes('letter')) {
+                document.getElementById('him').click();
+                return;
+            }
+            
+            // Check if near bed for sleep
+            if (gameState.isNearBed && gameState.allQuestsComplete) {
+                document.getElementById('bed').click();
+                return;
+            }
+            
+            // Check for nearby items
+            const herBox = getCharacterHitbox(gameState.herPosition.x, gameState.herPosition.y, 'her');
+            const itemIds = ['teddybear', 'flower', 'giftbox', 'steak', 'cake', 'wine', 'letter'];
+            
+            for (let itemId of itemIds) {
+                const item = document.getElementById(itemId);
+                if (!item || gameState.itemsCollected.includes(itemId)) continue;
+                
+                const itemRect = item.getBoundingClientRect();
+                const room = document.getElementById('room');
+                const roomRect = room.getBoundingClientRect();
+                
+                // Calculate item position relative to room
+                const itemX = item.offsetLeft;
+                const itemY = 618 - item.offsetTop - 48; // Convert to bottom-based coordinate
+                
+                const herCenterX = herBox.x + herBox.width / 2;
+                const herCenterY = herBox.y + herBox.height / 2;
+                const itemCenterX = itemX + 24;
+                const itemCenterY = itemY + 24;
+                
+                const distance = Math.sqrt(
+                    Math.pow(herCenterX - itemCenterX, 2) + 
+                    Math.pow(herCenterY - itemCenterY, 2)
+                );
+                
+                if (distance < 80) {
+                    item.click();
+                    return;
+                }
+            }
+            
+            // Click PC table if near
+            const pcTable = document.getElementById('pcTable');
+            if (pcTable) {
+                const pcBox = { x: 438, y: 180, width: 390, height: 150 };
+                const herCenterX = herBox.x + herBox.width / 2;
+                const herCenterY = herBox.y + herBox.height / 2;
+                const pcCenterX = pcBox.x + pcBox.width / 2;
+                const pcCenterY = pcBox.y + pcBox.height / 2;
+                
+                const distance = Math.sqrt(
+                    Math.pow(herCenterX - pcCenterX, 2) + 
+                    Math.pow(herCenterY - pcCenterY, 2)
+                );
+                
+                if (distance < 150) {
+                    pcTable.click();
+                    return;
+                }
+            }
+        }
+
+        // Update movement to handle touch joystick
+        const originalUpdateMovement = updateMovement;
+        function updateMovement() {
+            if (!gameState.canMove || gameState.kissAnimating || gameState.isSleeping) {
+                requestAnimationFrame(updateMovement);
+                return;
+            }
+
+            const speed = 1.5;
+            let moved = false;
+            let newX = gameState.herPosition.x;
+            let newY = gameState.herPosition.y;
+            let newDirection = gameState.herDirection;
+
+            // Handle touch joystick input
+            if (touchJoystickActive) {
+                const threshold = 0.3;
+                
+                if (Math.abs(touchMoveVector.x) > threshold || Math.abs(touchMoveVector.y) > threshold) {
+                    // Vertical movement (Y axis is inverted for game coordinates)
+                    if (touchMoveVector.y < -threshold) {
+                        const testY = newY + speed;
+                        if (!checkCollision(newX, testY)) {
+                            newY = testY;
+                            newDirection = 'back';
+                            moved = true;
+                        }
+                    } else if (touchMoveVector.y > threshold) {
+                        const testY = newY - speed;
+                        if (!checkCollision(newX, testY)) {
+                            newY = testY;
+                            newDirection = 'front';
+                            moved = true;
+                        }
+                    }
+                    
+                    // Horizontal movement
+                    if (touchMoveVector.x < -threshold) {
+                        const testX = newX - speed;
+                        if (!checkCollision(testX, newY)) {
+                            newX = testX;
+                            newDirection = 'left';
+                            moved = true;
+                        }
+                    } else if (touchMoveVector.x > threshold) {
+                        const testX = newX + speed;
+                        if (!checkCollision(testX, newY)) {
+                            newX = testX;
+                            newDirection = 'right';
+                            moved = true;
+                        }
+                    }
+                }
+            }
+
+            // Handle keyboard input
+            if (keys['w'] || keys['arrowup']) {
+                const testY = newY + speed;
+                if (!checkCollision(newX, testY)) {
+                    newY = testY;
+                    newDirection = 'back';
+                    moved = true;
+                }
+            }
+            if (keys['s'] || keys['arrowdown']) {
+                const testY = newY - speed;
+                if (!checkCollision(newX, testY)) {
+                    newY = testY;
+                    newDirection = 'front';
+                    moved = true;
+                }
+            }
+            if (keys['a'] || keys['arrowleft']) {
+                const testX = newX - speed;
+                if (!checkCollision(testX, newY)) {
+                    newX = testX;
+                    newDirection = 'left';
+                    moved = true;
+                }
+            }
+            if (keys['d'] || keys['arrowright']) {
+                const testX = newX + speed;
+                if (!checkCollision(testX, newY)) {
+                    newX = testX;
+                    newDirection = 'right';
+                    moved = true;
+                }
+            }
+
+            if (moved) {
+                stepCount++;
+                if (stepCount >= 1000) {
+                    unlockAchievement('explorer');
+                }
+            }
+
+            newX = Math.max(20, Math.min(720, newX));
+            newY = Math.max(80, Math.min(500, newY));
+
+            gameState.herPosition.x = newX;
+            gameState.herPosition.y = newY;
+            document.getElementById('her').style.left = newX + 'px';
+            document.getElementById('her').style.bottom = newY + 'px';
+
+            const herSprite = document.getElementById('herSprite');
+            
+            if (moved) {
+                gameState.herDirection = newDirection;
+                gameState.frameCounter++;
+                
+                // Cycle between 1 and 2 for walk frames (walk.png and walk2.png)
+                if (gameState.frameCounter % 10 === 0) {
+                    gameState.walkFrame = gameState.walkFrame === 1 ? 2 : 1;
+                }
+                
+                // Always use walk frames when moving
+                // Frame 1 uses just "_walk.png", frame 2 uses "_walk2.png"
+                const frameNum = gameState.walkFrame === 1 ? '' : '2';
+                herSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/${newDirection}_walk${frameNum}.png`;
+            } else {
+                gameState.walkFrame = 1;
+                gameState.frameCounter = 0;
+                herSprite.src = `https://raw.githubusercontent.com/Anonventions/cozygameplays/main/characters/her/${gameState.herDirection}_stand.png`;
+            }
+
+            checkProximityToHim();
+            checkProximityToBed();
+            updateZIndex();
+            requestAnimationFrame(updateMovement);
+        }
+
+        // Responsive Scaling
+        function scaleGameToFit() {
+            const gameContainer = document.getElementById('gameContainer');
+            const room = document.getElementById('room');
+            
+            if (!gameContainer || !room) return;
+            
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            const roomWidth = 828;
+            const roomHeight = 618;
+            
+            // Calculate scale to fit window while maintaining aspect ratio
+            const scaleX = windowWidth / roomWidth;
+            const scaleY = windowHeight / roomHeight;
+            const scale = Math.min(scaleX, scaleY, 1.0); // Don't scale up beyond 100%
+            
+            if (windowWidth <= 900) {
+                room.style.transform = `scale(${scale})`;
+            } else {
+                room.style.transform = 'scale(1)';
+            }
+        }
+
+        // Add touch event listeners to clickable elements
+        function addTouchSupport() {
+            const clickableElements = [
+                'him', 'bed', 'pcTable', 
+                'teddybear', 'flower', 'giftbox', 'steak', 'cake', 'wine', 'letter'
+            ];
+            
+            clickableElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('touchend', (e) => {
+                        e.preventDefault();
+                        if (!gameState.dialogueActive || id.includes('bear') || id.includes('flower') || 
+                            id.includes('gift') || id.includes('steak') || id.includes('cake') || 
+                            id.includes('wine') || id.includes('letter')) {
+                            element.click();
+                        }
+                    });
+                }
+            });
+        }
+
+        // Initialize mobile support
+        window.addEventListener('load', () => {
+            initTouchControls();
+            scaleGameToFit();
+            addTouchSupport();
+        });
+
+        window.addEventListener('resize', () => {
+            scaleGameToFit();
+        });
 
         ['teddybear', 'flower', 'giftbox', 'steak', 'cake', 'wine', 'letter'].forEach(itemId => {
             document.getElementById(itemId).addEventListener('click', () => {
