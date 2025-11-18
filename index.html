@@ -1459,6 +1459,303 @@
             background: linear-gradient(135deg, #F48FB1, #EC407A);
             transform: scale(1.05);
         }
+
+        /* New RPG Panel Styles */
+        .rpg-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(198,160,246,0.98), rgba(157,129,204,0.98));
+            padding: 30px;
+            border-radius: 20px;
+            z-index: 3000;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 3px solid rgba(210,180,230,0.8);
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: white;
+        }
+
+        .rpg-panel h2 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .rpg-panel button {
+            background: linear-gradient(135deg, #F8BBD0, #F48FB1);
+            border: 2px solid rgba(255,224,230,0.8);
+            border-radius: 10px;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Quaver', Arial;
+        }
+
+        .rpg-panel button:hover {
+            background: linear-gradient(135deg, #F48FB1, #EC407A);
+            transform: scale(1.05);
+        }
+
+        /* Quick Menu */
+        #quickMenu {
+            position: fixed;
+            top: 50%;
+            right: 25px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .quick-btn {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(248,187,208,0.95), rgba(244,143,177,0.95));
+            border: 2px solid rgba(255,224,230,0.8);
+            border-radius: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(248,187,208,0.6);
+        }
+
+        /* Status Effects */
+        #statusEffects {
+            position: fixed;
+            top: 25px;
+            left: 400px;
+            display: flex;
+            gap: 15px;
+            z-index: 500;
+            font-size: 14px;
+        }
+
+        #statusEffects > div {
+            background: rgba(198,160,246,0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 2px solid rgba(210,180,230,0.6);
+            color: white;
+        }
+
+        /* Save Slots */
+        .save-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .save-slot-btn {
+            width: 100%;
+            text-align: left;
+            padding: 15px !important;
+        }
+
+        .save-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .save-actions button {
+            flex: 1;
+        }
+
+        /* Equipment */
+        .equipment-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .eq-tab {
+            flex: 1;
+            padding: 10px !important;
+        }
+
+        .eq-tab.active {
+            background: linear-gradient(135deg, #FFE082, #FFD54F) !important;
+            color: #333;
+        }
+
+        .equipment-grid, .crafting-grid, .cooking-grid, .gift-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .equipment-item, .craft-item, .cook-item, .gift-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .equipment-item:hover, .craft-item:hover, .cook-item:hover, .gift-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .equipment-item.owned {
+            border-color: #FFE082;
+        }
+
+        .equipment-item.equipped {
+            background: linear-gradient(135deg, rgba(255,224,130,0.3), rgba(255,213,79,0.3));
+            border-color: #FFE082;
+        }
+
+        .currency-display {
+            background: rgba(255,224,130,0.2);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #FFE082;
+        }
+
+        /* Skills */
+        .skill-points {
+            background: rgba(255,224,130,0.2);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #FFE082;
+        }
+
+        .skill-trees {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .skill-category h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-item {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .skill-item.unlocked {
+            background: linear-gradient(135deg, rgba(255,224,130,0.3), rgba(255,213,79,0.3));
+            border-color: #FFE082;
+        }
+
+        .skill-item.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Tutorial */
+        #tutorialOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tutorial-box {
+            background: linear-gradient(135deg, rgba(198,160,246,0.98), rgba(157,129,204,0.98));
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            border: 3px solid rgba(210,180,230,0.8);
+        }
+
+        .tutorial-box h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .tutorial-box #tutorialText {
+            color: white;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .tutorial-box button {
+            margin: 0 10px;
+        }
+
+        /* Random Event Notification */
+        #randomEventNotif {
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, rgba(255,224,130,0.95), rgba(255,213,79,0.95));
+            padding: 20px 30px;
+            border-radius: 15px;
+            z-index: 5000;
+            box-shadow: 0 10px 40px rgba(255,224,130,0.5);
+            border: 3px solid #FFE082;
+            transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #randomEventNotif.show {
+            top: 100px;
+        }
+
+        #eventIcon {
+            font-size: 32px;
+        }
+
+        #eventText {
+            color: #333;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -1560,6 +1857,117 @@
         <button class="close-info-btn" id="closeItemInfo">Close</button>
     </div>
 
+    <!-- New RPG Panels -->
+    
+    <!-- Save/Load Menu -->
+    <div id="saveMenu" class="rpg-panel" style="display: none;">
+        <h2>💾 Save & Load</h2>
+        <div class="save-slots">
+            <button class="save-slot-btn" data-slot="1">Slot 1: <span id="save1Info">Empty</span></button>
+            <button class="save-slot-btn" data-slot="2">Slot 2: <span id="save2Info">Empty</span></button>
+            <button class="save-slot-btn" data-slot="3">Slot 3: <span id="save3Info">Empty</span></button>
+        </div>
+        <div class="save-actions">
+            <button id="quickSave">Quick Save</button>
+            <button id="quickLoad">Quick Load</button>
+            <button id="closeSaveMenu">Close</button>
+        </div>
+    </div>
+
+    <!-- Equipment Menu -->
+    <div id="equipmentMenu" class="rpg-panel" style="display: none;">
+        <h2>👗 Equipment</h2>
+        <div class="equipment-tabs">
+            <button class="eq-tab active" data-tab="outfits">Outfits</button>
+            <button class="eq-tab" data-tab="accessories">Accessories</button>
+            <button class="eq-tab" data-tab="pets">Pets</button>
+        </div>
+        <div id="equipmentList" class="equipment-grid"></div>
+        <div class="currency-display">Love Coins: <span id="currencyAmount">100</span></div>
+        <button id="closeEquipment">Close</button>
+    </div>
+
+    <!-- Skills Menu -->
+    <div id="skillsMenu" class="rpg-panel" style="display: none;">
+        <h2>🎯 Skills</h2>
+        <div class="skill-points">Skill Points: <span id="skillPointsDisplay">0</span></div>
+        <div class="skill-trees">
+            <div class="skill-category">
+                <h3>🍳 Cooking</h3>
+                <div id="cookingSkills" class="skill-list"></div>
+            </div>
+            <div class="skill-category">
+                <h3>🔨 Crafting</h3>
+                <div id="craftingSkills" class="skill-list"></div>
+            </div>
+            <div class="skill-category">
+                <h3>💕 Social</h3>
+                <div id="socialSkills" class="skill-list"></div>
+            </div>
+            <div class="skill-category">
+                <h3>⚡ Energy</h3>
+                <div id="energySkills" class="skill-list"></div>
+            </div>
+        </div>
+        <button id="closeSkills">Close</button>
+    </div>
+
+    <!-- Crafting Menu -->
+    <div id="craftingMenu" class="rpg-panel" style="display: none;">
+        <h2>🔨 Crafting</h2>
+        <div id="craftingRecipes" class="crafting-grid"></div>
+        <button id="closeCrafting">Close</button>
+    </div>
+
+    <!-- Cooking Menu -->
+    <div id="cookingMenu" class="rpg-panel" style="display: none;">
+        <h2>🍳 Cooking</h2>
+        <div id="cookingRecipes" class="cooking-grid"></div>
+        <button id="closeCooking">Close</button>
+    </div>
+
+    <!-- Gift Shop -->
+    <div id="giftShop" class="rpg-panel" style="display: none;">
+        <h2>🎁 Gift Shop</h2>
+        <div id="giftItems" class="gift-grid"></div>
+        <div class="currency-display">Love Coins: <span id="shopCurrencyAmount">100</span></div>
+        <button id="closeGiftShop">Close</button>
+    </div>
+
+    <!-- Quick Access Menu -->
+    <div id="quickMenu">
+        <button class="quick-btn" id="openSave" title="Save/Load">💾</button>
+        <button class="quick-btn" id="openEquipment" title="Equipment">👗</button>
+        <button class="quick-btn" id="openSkills" title="Skills">🎯</button>
+        <button class="quick-btn" id="openCrafting" title="Crafting">🔨</button>
+        <button class="quick-btn" id="openCooking" title="Cooking">🍳</button>
+        <button class="quick-btn" id="openGiftShop" title="Gift Shop">🎁</button>
+    </div>
+
+    <!-- Status Effects Display -->
+    <div id="statusEffects">
+        <div id="timeDisplay">🌅 Morning - Day 1</div>
+        <div id="weatherDisplay">☀️ Clear</div>
+        <div id="energyDisplay">⚡ Energy: 100/100</div>
+        <div id="healthDisplay">❤️ Health: 100/100</div>
+    </div>
+
+    <!-- Tutorial Overlay -->
+    <div id="tutorialOverlay" style="display: none;">
+        <div class="tutorial-box">
+            <h2>💡 Tutorial</h2>
+            <div id="tutorialText"></div>
+            <button id="nextTutorial">Next</button>
+            <button id="skipTutorial">Skip Tutorial</button>
+        </div>
+    </div>
+
+    <!-- Random Event Notification -->
+    <div id="randomEventNotif">
+        <div id="eventIcon"></div>
+        <div id="eventText"></div>
+    </div>
+
     <!-- Loading Screen -->
     <div id="loadScreen">
         <div class="loading-heart" style="left: 10%; animation-delay: 0s;">💕</div>
@@ -1587,6 +1995,18 @@
             <span class="stat-value" id="playerLevel">1</span>
         </div>
         <div class="stat-row">
+            <span class="stat-label">❤️ Health:</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="healthBar" style="width: 100%; background: linear-gradient(90deg, #FF6B9D, #C44569);"></div>
+            </div>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">⚡ Energy:</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="energyBar" style="width: 100%; background: linear-gradient(90deg, #FFE082, #FFD54F);"></div>
+            </div>
+        </div>
+        <div class="stat-row">
             <span class="stat-label">Love:</span>
             <div class="progress-bar">
                 <div class="progress-fill" id="loveBar" style="width: 0%"></div>
@@ -1603,6 +2023,10 @@
         <div class="stat-row">
             <span class="stat-label">Items Found:</span>
             <span class="stat-value" id="itemsFound">0 / 7</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">💰 Coins:</span>
+            <span class="stat-value" id="coinsStat">100</span>
         </div>
     </div>
 
@@ -2292,7 +2716,7 @@
             }, 10000); // 10 seconds
         }
 
-        // RPG Stats System
+        // RPG Stats System - Enhanced
         const rpgStats = {
             level: 1,
             xp: 0,
@@ -2301,10 +2725,28 @@
             maxLove: 100,
             creativity: 0,
             intelligence: 0,
-            energy: 0,
+            energy: 100,
+            maxEnergy: 100,
+            health: 100,
+            maxHealth: 100,
             skills: 0,
+            skillPoints: 0,
             achievements: [],
-            inventory: []
+            inventory: [],
+            equipment: {
+                outfit: null,
+                accessory: null,
+                pet: null
+            },
+            relationship: {
+                affection: 0,
+                trust: 0,
+                romance: 0
+            },
+            currency: 100, // Love coins
+            craftingMaterials: {},
+            unlockedSkills: [],
+            completedEvents: []
         };
 
         const CHARACTER_HITBOX = {
@@ -2335,7 +2777,19 @@
             himPosition: { x: 464, y: 240 },
             dialogueActive: false,
             watchedMovie: false,
-            dailyActivitiesDone: 0
+            dailyActivitiesDone: 0,
+            // New RPG features
+            currentDay: 1,
+            timeOfDay: 'morning', // morning, afternoon, evening, night
+            weather: 'clear', // clear, rain, snow, sunny, cherry
+            currentRoom: 'bedroom', // bedroom, kitchen, garden, etc
+            tutorialComplete: false,
+            difficulty: 'normal', // easy, normal, hard
+            autoSaveEnabled: true,
+            lastSaveTime: null,
+            randomEventCooldown: 0,
+            petHappiness: 50,
+            gardenPlants: []
         };
 
         const quests = [
@@ -2365,7 +2819,16 @@
             { id: 'night_owl', name: 'Night Owl', desc: 'Play past midnight', icon: '🦉' },
             { id: 'sweet_dreams', name: 'Sweet Dreams', desc: 'Sleep together', icon: '😴' },
             { id: 'speed_runner', name: 'Speed Runner', desc: 'Complete all quests in under 10 minutes', icon: '⚡' },
-            { id: 'perfect_love', name: 'Perfect Love', desc: 'Complete everything', icon: '👑' }
+            { id: 'perfect_love', name: 'Perfect Love', desc: 'Complete everything', icon: '👑' },
+            // New achievements
+            { id: 'master_chef', name: 'Master Chef', desc: 'Cook 10 meals', icon: '👨‍🍳' },
+            { id: 'crafter', name: 'Crafter', desc: 'Craft 5 items', icon: '🔨' },
+            { id: 'gift_giver', name: 'Gift Giver', desc: 'Give 5 gifts', icon: '🎀' },
+            { id: 'fashionista', name: 'Fashionista', desc: 'Collect all outfits', icon: '👗' },
+            { id: 'pet_lover', name: 'Pet Lover', desc: 'Keep pet happiness above 80', icon: '🐱' },
+            { id: 'gardener', name: 'Gardener', desc: 'Grow 10 plants', icon: '🌱' },
+            { id: 'max_level', name: 'Max Level', desc: 'Reach level 10', icon: '⭐' },
+            { id: 'skill_master', name: 'Skill Master', desc: 'Unlock all skills', icon: '🎯' }
         ];
 
         const itemMessages = {
@@ -2386,6 +2849,88 @@
             cake: '🍰',
             wine: '🍷',
             letter: '💌'
+        };
+
+        // Equipment System
+        const equipment = {
+            outfits: [
+                { id: 'default', name: 'Casual Outfit', bonus: { energy: 0 }, cost: 0, owned: true },
+                { id: 'elegant', name: 'Elegant Dress', bonus: { love: 10 }, cost: 200, owned: false },
+                { id: 'sporty', name: 'Sporty Outfit', bonus: { energy: 20 }, cost: 150, owned: false },
+                { id: 'cute', name: 'Cute Pajamas', bonus: { creativity: 10 }, cost: 100, owned: false }
+            ],
+            accessories: [
+                { id: 'bow', name: 'Hair Bow', bonus: { love: 5 }, cost: 50, owned: false },
+                { id: 'necklace', name: 'Heart Necklace', bonus: { romance: 10 }, cost: 150, owned: false },
+                { id: 'bracelet', name: 'Charm Bracelet', bonus: { luck: 5 }, cost: 100, owned: false }
+            ],
+            pets: [
+                { id: 'cat', name: 'Fluffy Cat', bonus: { happiness: 10 }, cost: 300, owned: false },
+                { id: 'dog', name: 'Loyal Dog', bonus: { energy: 15 }, cost: 300, owned: false },
+                { id: 'bunny', name: 'Cute Bunny', bonus: { love: 10 }, cost: 250, owned: false }
+            ]
+        };
+
+        // Skill Tree System
+        const skillTree = {
+            cooking: [
+                { id: 'basic_cooking', name: 'Basic Cooking', desc: 'Unlock cooking mini-game', cost: 1, unlocked: false },
+                { id: 'advanced_cooking', name: 'Advanced Cooking', desc: 'Cook advanced recipes', cost: 2, unlocked: false, requires: 'basic_cooking' },
+                { id: 'master_chef', name: 'Master Chef', desc: '+50% cooking speed', cost: 3, unlocked: false, requires: 'advanced_cooking' }
+            ],
+            crafting: [
+                { id: 'basic_crafting', name: 'Basic Crafting', desc: 'Unlock crafting system', cost: 1, unlocked: false },
+                { id: 'advanced_crafting', name: 'Advanced Crafting', desc: 'Craft rare items', cost: 2, unlocked: false, requires: 'basic_crafting' }
+            ],
+            social: [
+                { id: 'charmer', name: 'Charmer', desc: '+20% affection gain', cost: 1, unlocked: false },
+                { id: 'romantic', name: 'Romantic', desc: 'Unlock romantic dialogues', cost: 2, unlocked: false, requires: 'charmer' }
+            ],
+            energy: [
+                { id: 'energized', name: 'Energized', desc: '+20 max energy', cost: 1, unlocked: false },
+                { id: 'tireless', name: 'Tireless', desc: 'Energy drains 50% slower', cost: 2, unlocked: false, requires: 'energized' }
+            ]
+        };
+
+        // Crafting Recipes
+        const craftingRecipes = [
+            { id: 'love_letter', name: 'Love Letter', materials: { paper: 1, ink: 1 }, result: 'love_letter', affection: 15 },
+            { id: 'photo_frame', name: 'Photo Frame', materials: { wood: 2, glass: 1 }, result: 'photo_frame', affection: 25 },
+            { id: 'bracelet', name: 'Handmade Bracelet', materials: { thread: 2, beads: 3 }, result: 'bracelet', affection: 20 },
+            { id: 'scrapbook', name: 'Memory Scrapbook', materials: { paper: 5, photos: 3, glue: 1 }, result: 'scrapbook', affection: 40 }
+        ];
+
+        // Cooking Recipes  
+        const cookingRecipes = [
+            { id: 'pancakes', name: 'Heart Pancakes', ingredients: { flour: 2, eggs: 1, milk: 1 }, energy: 20, love: 5 },
+            { id: 'pasta', name: 'Romantic Pasta', ingredients: { pasta: 1, sauce: 1, cheese: 1 }, energy: 30, love: 10 },
+            { id: 'cake', name: 'Love Cake', ingredients: { flour: 3, eggs: 2, sugar: 2, butter: 1 }, energy: 40, love: 20 },
+            { id: 'cookies', name: 'Heart Cookies', ingredients: { flour: 2, sugar: 1, butter: 1 }, energy: 15, love: 8 }
+        ];
+
+        // Gift System
+        const giftItems = [
+            { id: 'rose', name: 'Red Rose', cost: 50, affection: 10, romance: 5 },
+            { id: 'chocolate', name: 'Chocolates', cost: 75, affection: 15, love: 10 },
+            { id: 'plushie', name: 'Cute Plushie', cost: 100, affection: 20, happiness: 10 },
+            { id: 'jewelry', name: 'Jewelry', cost: 250, affection: 40, romance: 20 },
+            { id: 'perfume', name: 'Perfume', cost: 150, affection: 25, romance: 15 }
+        ];
+
+        // Random Events
+        const randomEvents = [
+            { id: 'surprise_gift', name: 'Surprise Gift', desc: 'Found a surprise gift!', reward: { currency: 50 }, chance: 0.1 },
+            { id: 'energy_boost', name: 'Energy Boost', desc: 'Feeling energized!', reward: { energy: 30 }, chance: 0.15 },
+            { id: 'romantic_moment', name: 'Romantic Moment', desc: 'A sweet moment together', reward: { romance: 20 }, chance: 0.1 },
+            { id: 'found_material', name: 'Found Material', desc: 'Found crafting materials!', reward: { randomMaterial: 1 }, chance: 0.2 }
+        ];
+
+        // Time-based events
+        const timeEvents = {
+            morning: { energyRegen: 2, mood: 'fresh' },
+            afternoon: { energyRegen: 1, mood: 'active' },
+            evening: { energyRegen: 1, mood: 'romantic' },
+            night: { energyRegen: 0, mood: 'cozy' }
         };
 
         const itemInfo = {
@@ -2528,6 +3073,17 @@
             document.getElementById('loveBar').style.width = (rpgStats.love / rpgStats.maxLove * 100) + '%';
             document.getElementById('itemsFound').textContent = gameState.itemsCollected.length + ' / 7';
             document.getElementById('creativityStat').textContent = rpgStats.creativity;
+            
+            // Update new stats
+            document.getElementById('healthBar').style.width = (rpgStats.health / rpgStats.maxHealth * 100) + '%';
+            document.getElementById('energyBar').style.width = (rpgStats.energy / rpgStats.maxEnergy * 100) + '%';
+            document.getElementById('coinsStat').textContent = rpgStats.currency;
+            document.getElementById('currencyAmount').textContent = rpgStats.currency;
+            document.getElementById('shopCurrencyAmount').textContent = rpgStats.currency;
+            document.getElementById('skillPointsDisplay').textContent = rpgStats.skillPoints;
+            
+            // Update time/weather display
+            updateTimeDisplay();
         }
 
         function addXP(amount) {
@@ -2544,6 +3100,11 @@
             rpgStats.level++;
             rpgStats.xp -= rpgStats.maxXp;
             rpgStats.maxXp = Math.floor(rpgStats.maxXp * 1.5);
+            rpgStats.skillPoints += 1; // Gain skill point on level up
+            rpgStats.maxHealth += 10; // Increase max health
+            rpgStats.maxEnergy += 10; // Increase max energy
+            rpgStats.health = rpgStats.maxHealth; // Full heal on level up
+            rpgStats.energy = rpgStats.maxEnergy; // Full energy on level up
             
             playSound('success');
             const levelUpEffect = document.createElement('div');
@@ -2555,6 +3116,9 @@
             
             if (rpgStats.level === 2) unlockAchievement('level_2');
             if (rpgStats.level === 3) unlockAchievement('level_3');
+            if (rpgStats.level === 10) unlockAchievement('max_level');
+            
+            showNotification(`Level Up! You're now level ${rpgStats.level}! +1 Skill Point`, '⭐');
             
             updateStatsUI();
         }
@@ -2917,6 +3481,518 @@
             requestAnimationFrame(updateMovement);
         }
         updateMovement();
+
+        // ===== NEW RPG SYSTEM FUNCTIONS =====
+        
+        // Save/Load System
+        function saveGame(slot = 'quick') {
+            const saveData = {
+                rpgStats: rpgStats,
+                gameState: gameState,
+                quests: quests,
+                timestamp: Date.now(),
+                playTime: Math.floor((Date.now() - gameStartTime) / 1000)
+            };
+            
+            localStorage.setItem(`cozyGame_save_${slot}`, JSON.stringify(saveData));
+            const saveInfo = document.getElementById(`save${slot}Info`);
+            if (saveInfo) {
+                saveInfo.textContent = `Level ${rpgStats.level} - ${new Date().toLocaleString()}`;
+            }
+            showNotification('Game Saved!', '💾');
+            gameState.lastSaveTime = Date.now();
+        }
+
+        function loadGame(slot = 'quick') {
+            const saveData = localStorage.getItem(`cozyGame_save_${slot}`);
+            if (!saveData) {
+                showNotification('No save data found', '❌');
+                return;
+            }
+            
+            const data = JSON.parse(saveData);
+            Object.assign(rpgStats, data.rpgStats);
+            Object.assign(gameState, data.gameState);
+            Object.assign(quests, data.quests);
+            
+            updateStatsUI();
+            updateQuestUI();
+            showNotification('Game Loaded!', '📂');
+        }
+
+        function autoSave() {
+            if (gameState.autoSaveEnabled) {
+                saveGame('auto');
+            }
+        }
+
+        // Run autosave every 2 minutes
+        setInterval(autoSave, 120000);
+
+        // Time/Weather System
+        function updateTimeDisplay() {
+            const timeEmojis = { morning: '🌅', afternoon: '☀️', evening: '🌆', night: '🌙' };
+            const weatherEmojis = { clear: '☀️', rain: '🌧️', snow: '❄️', sunny: '☀️', cherry: '🌸' };
+            
+            document.getElementById('timeDisplay').textContent = `${timeEmojis[gameState.timeOfDay]} ${gameState.timeOfDay.charAt(0).toUpperCase() + gameState.timeOfDay.slice(1)} - Day ${gameState.currentDay}`;
+            document.getElementById('weatherDisplay').textContent = `${weatherEmojis[gameState.weather]} ${gameState.weather.charAt(0).toUpperCase() + gameState.weather.slice(1)}`;
+            document.getElementById('energyDisplay').textContent = `⚡ Energy: ${Math.floor(rpgStats.energy)}/${rpgStats.maxEnergy}`;
+            document.getElementById('healthDisplay').textContent = `❤️ Health: ${Math.floor(rpgStats.health)}/${rpgStats.maxHealth}`;
+        }
+
+        function advanceTime() {
+            const times = ['morning', 'afternoon', 'evening', 'night'];
+            const currentIndex = times.indexOf(gameState.timeOfDay);
+            
+            if (currentIndex === 3) {
+                gameState.timeOfDay = 'morning';
+                gameState.currentDay++;
+                rpgStats.energy = Math.min(rpgStats.maxEnergy, rpgStats.energy + 50); // Rest bonus
+            } else {
+                gameState.timeOfDay = times[currentIndex + 1];
+            }
+            
+            updateTimeDisplay();
+            triggerRandomEvent();
+        }
+
+        // Energy regeneration over time
+        setInterval(() => {
+            if (rpgStats.energy < rpgStats.maxEnergy) {
+                rpgStats.energy = Math.min(rpgStats.maxEnergy, rpgStats.energy + 0.5);
+                updateStatsUI();
+            }
+        }, 5000);
+
+        // Random Events System
+        function triggerRandomEvent() {
+            if (gameState.randomEventCooldown > 0) {
+                gameState.randomEventCooldown--;
+                return;
+            }
+            
+            const roll = Math.random();
+            for (const event of randomEvents) {
+                if (roll < event.chance) {
+                    showRandomEvent(event);
+                    gameState.randomEventCooldown = 5;
+                    break;
+                }
+            }
+        }
+
+        function showRandomEvent(event) {
+            const notif = document.getElementById('randomEventNotif');
+            document.getElementById('eventIcon').textContent = '🎲';
+            document.getElementById('eventText').textContent = event.desc;
+            
+            notif.classList.add('show');
+            setTimeout(() => notif.classList.remove('show'), 3000);
+            
+            // Apply rewards
+            if (event.reward.currency) rpgStats.currency += event.reward.currency;
+            if (event.reward.energy) rpgStats.energy = Math.min(rpgStats.maxEnergy, rpgStats.energy + event.reward.energy);
+            if (event.reward.romance) rpgStats.relationship.romance += event.reward.romance;
+            
+            updateStatsUI();
+        }
+
+        function showNotification(message, icon = '💬') {
+            const notif = document.getElementById('randomEventNotif');
+            document.getElementById('eventIcon').textContent = icon;
+            document.getElementById('eventText').textContent = message;
+            
+            notif.classList.add('show');
+            setTimeout(() => notif.classList.remove('show'), 2500);
+        }
+
+        // Equipment System
+        function openEquipmentMenu() {
+            document.getElementById('equipmentMenu').style.display = 'block';
+            renderEquipment('outfits');
+        }
+
+        function renderEquipment(category) {
+            const list = document.getElementById('equipmentList');
+            list.innerHTML = '';
+            
+            const items = equipment[category];
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'equipment-item';
+                if (item.owned) div.classList.add('owned');
+                if (rpgStats.equipment[category.slice(0, -1)] === item.id) div.classList.add('equipped');
+                
+                div.innerHTML = `
+                    <div><strong>${item.name}</strong></div>
+                    <div style="font-size: 12px; opacity: 0.8;">
+                        ${Object.entries(item.bonus).map(([k, v]) => `+${v} ${k}`).join(', ')}
+                    </div>
+                    <div style="font-size: 14px; margin-top: 5px;">
+                        ${item.owned ? (rpgStats.equipment[category.slice(0, -1)] === item.id ? 'Equipped' : 'Equip') : `Buy: ${item.cost} 💰`}
+                    </div>
+                `;
+                
+                div.onclick = () => {
+                    if (!item.owned) {
+                        if (rpgStats.currency >= item.cost) {
+                            rpgStats.currency -= item.cost;
+                            item.owned = true;
+                            showNotification(`Purchased ${item.name}!`, '🛍️');
+                            renderEquipment(category);
+                            updateStatsUI();
+                        } else {
+                            showNotification('Not enough coins!', '❌');
+                        }
+                    } else {
+                        rpgStats.equipment[category.slice(0, -1)] = item.id;
+                        applyEquipmentBonus(item);
+                        showNotification(`Equipped ${item.name}!`, '✨');
+                        renderEquipment(category);
+                    }
+                };
+                
+                list.appendChild(div);
+            });
+        }
+
+        function applyEquipmentBonus(item) {
+            // Apply bonuses from equipment
+            Object.entries(item.bonus).forEach(([stat, value]) => {
+                if (rpgStats[stat] !== undefined) {
+                    rpgStats[stat] = Math.min(rpgStats[`max${stat.charAt(0).toUpperCase() + stat.slice(1)}`] || 999, rpgStats[stat] + value);
+                }
+            });
+            updateStatsUI();
+        }
+
+        // Skill Tree System
+        function openSkillsMenu() {
+            document.getElementById('skillsMenu').style.display = 'block';
+            renderSkills();
+        }
+
+        function renderSkills() {
+            Object.entries(skillTree).forEach(([category, skills]) => {
+                const container = document.getElementById(`${category}Skills`);
+                container.innerHTML = '';
+                
+                skills.forEach(skill => {
+                    const div = document.createElement('div');
+                    div.className = 'skill-item';
+                    if (skill.unlocked) div.classList.add('unlocked');
+                    if (skill.requires && !skillTree[category].find(s => s.id === skill.requires)?.unlocked) div.classList.add('locked');
+                    
+                    div.innerHTML = `
+                        <div><strong>${skill.name}</strong></div>
+                        <div style="font-size: 11px; opacity: 0.8;">${skill.desc}</div>
+                        <div style="font-size: 12px; margin-top: 3px;">Cost: ${skill.cost} SP</div>
+                    `;
+                    
+                    div.onclick = () => {
+                        if (!skill.unlocked && rpgStats.skillPoints >= skill.cost) {
+                            if (!skill.requires || skillTree[category].find(s => s.id === skill.requires)?.unlocked) {
+                                rpgStats.skillPoints -= skill.cost;
+                                skill.unlocked = true;
+                                rpgStats.unlockedSkills.push(skill.id);
+                                showNotification(`Unlocked ${skill.name}!`, '🎯');
+                                renderSkills();
+                                updateStatsUI();
+                                
+                                // Check for achievements
+                                if (rpgStats.unlockedSkills.length === Object.values(skillTree).flat().length) {
+                                    unlockAchievement('skill_master');
+                                }
+                            } else {
+                                showNotification('Required skill not unlocked!', '❌');
+                            }
+                        } else if (skill.unlocked) {
+                            showNotification('Already unlocked!', 'ℹ️');
+                        } else {
+                            showNotification('Not enough skill points!', '❌');
+                        }
+                    };
+                    
+                    container.appendChild(div);
+                });
+            });
+        }
+
+        // Crafting System
+        function openCraftingMenu() {
+            if (!rpgStats.unlockedSkills.includes('basic_crafting')) {
+                showNotification('Unlock Basic Crafting skill first!', '🔒');
+                return;
+            }
+            document.getElementById('craftingMenu').style.display = 'block';
+            renderCrafting();
+        }
+
+        function renderCrafting() {
+            const container = document.getElementById('craftingRecipes');
+            container.innerHTML = '';
+            
+            craftingRecipes.forEach(recipe => {
+                const div = document.createElement('div');
+                div.className = 'craft-item';
+                
+                const canCraft = Object.entries(recipe.materials).every(([mat, count]) => 
+                    (rpgStats.craftingMaterials[mat] || 0) >= count
+                );
+                
+                div.innerHTML = `
+                    <div><strong>${recipe.name}</strong></div>
+                    <div style="font-size: 12px; opacity: 0.8;">
+                        ${Object.entries(recipe.materials).map(([m, c]) => `${m}: ${c}`).join(', ')}
+                    </div>
+                    <div style="font-size: 12px; margin-top: 5px;">+${recipe.affection} Affection</div>
+                `;
+                
+                div.onclick = () => {
+                    if (canCraft) {
+                        Object.entries(recipe.materials).forEach(([mat, count]) => {
+                            rpgStats.craftingMaterials[mat] -= count;
+                        });
+                        rpgStats.relationship.affection += recipe.affection;
+                        showNotification(`Crafted ${recipe.name}!`, '🔨');
+                        renderCrafting();
+                        
+                        // Track crafting achievement
+                        if (!rpgStats.completedEvents.includes(`craft_${recipe.id}`)) {
+                            rpgStats.completedEvents.push(`craft_${recipe.id}`);
+                            if (rpgStats.completedEvents.filter(e => e.startsWith('craft_')).length >= 5) {
+                                unlockAchievement('crafter');
+                            }
+                        }
+                    } else {
+                        showNotification('Missing materials!', '❌');
+                    }
+                };
+                
+                container.appendChild(div);
+            });
+        }
+
+        // Cooking System
+        function openCookingMenu() {
+            if (!rpgStats.unlockedSkills.includes('basic_cooking')) {
+                showNotification('Unlock Basic Cooking skill first!', '🔒');
+                return;
+            }
+            document.getElementById('cookingMenu').style.display = 'block';
+            renderCooking();
+        }
+
+        function renderCooking() {
+            const container = document.getElementById('cookingRecipes');
+            container.innerHTML = '';
+            
+            cookingRecipes.forEach(recipe => {
+                const div = document.createElement('div');
+                div.className = 'cook-item';
+                
+                div.innerHTML = `
+                    <div><strong>${recipe.name}</strong></div>
+                    <div style="font-size: 12px; opacity: 0.8;">
+                        ${Object.entries(recipe.ingredients).map(([i, c]) => `${i}: ${c}`).join(', ')}
+                    </div>
+                    <div style="font-size: 12px; margin-top: 5px;">+${recipe.energy} Energy, +${recipe.love} Love</div>
+                `;
+                
+                div.onclick = () => {
+                    rpgStats.energy = Math.min(rpgStats.maxEnergy, rpgStats.energy + recipe.energy);
+                    rpgStats.love = Math.min(rpgStats.maxLove, rpgStats.love + recipe.love);
+                    showNotification(`Cooked ${recipe.name}!`, '🍳');
+                    updateStatsUI();
+                    
+                    // Track cooking achievement
+                    if (!rpgStats.completedEvents.includes(`cook_${recipe.id}`)) {
+                        rpgStats.completedEvents.push(`cook_${recipe.id}`);
+                        if (rpgStats.completedEvents.filter(e => e.startsWith('cook_')).length >= 10) {
+                            unlockAchievement('master_chef');
+                        }
+                    }
+                };
+                
+                container.appendChild(div);
+            });
+        }
+
+        // Gift Shop System
+        function openGiftShop() {
+            document.getElementById('giftShop').style.display = 'block';
+            renderGiftShop();
+        }
+
+        function renderGiftShop() {
+            const container = document.getElementById('giftItems');
+            container.innerHTML = '';
+            
+            giftItems.forEach(gift => {
+                const div = document.createElement('div');
+                div.className = 'gift-item';
+                
+                div.innerHTML = `
+                    <div><strong>${gift.name}</strong></div>
+                    <div style="font-size: 12px; opacity: 0.8;">
+                        +${gift.affection} Affection
+                        ${gift.romance ? `, +${gift.romance} Romance` : ''}
+                    </div>
+                    <div style="font-size: 14px; margin-top: 5px;">Buy: ${gift.cost} 💰</div>
+                `;
+                
+                div.onclick = () => {
+                    if (rpgStats.currency >= gift.cost) {
+                        rpgStats.currency -= gift.cost;
+                        rpgStats.relationship.affection += gift.affection;
+                        if (gift.romance) rpgStats.relationship.romance += gift.romance;
+                        showNotification(`Gave ${gift.name} to Amon!`, '🎁');
+                        updateStatsUI();
+                        
+                        // Track gift giving achievement
+                        if (!rpgStats.completedEvents.includes(`gift_${gift.id}`)) {
+                            rpgStats.completedEvents.push(`gift_${gift.id}`);
+                            if (rpgStats.completedEvents.filter(e => e.startsWith('gift_')).length >= 5) {
+                                unlockAchievement('gift_giver');
+                            }
+                        }
+                    } else {
+                        showNotification('Not enough coins!', '❌');
+                    }
+                };
+                
+                container.appendChild(div);
+            });
+        }
+
+        // Tutorial System
+        let tutorialStep = 0;
+        const tutorialSteps = [
+            { text: 'Welcome to CozyBeds! Use WASD or Arrow Keys to move Diana around.', icon: '🎮' },
+            { text: 'Collect items around the room by clicking on them. Each item comes with a special message!', icon: '🎁' },
+            { text: 'Click the PC to do activities together. Different activities boost different stats!', icon: '💻' },
+            { text: 'Open the Quick Menu on the right to access new features like Equipment, Skills, and more!', icon: '📋' },
+            { text: 'Complete quests to gain XP and level up. Level ups give you skill points!', icon: '⭐' },
+            { text: 'Save your game regularly using the Save/Load menu. Auto-save is enabled by default.', icon: '💾' },
+            { text: 'Have fun exploring and building your relationship! 💕', icon: '😊' }
+        ];
+
+        function startTutorial() {
+            if (!gameState.tutorialComplete) {
+                showTutorialStep();
+            }
+        }
+
+        function showTutorialStep() {
+            if (tutorialStep >= tutorialSteps.length) {
+                gameState.tutorialComplete = true;
+                document.getElementById('tutorialOverlay').style.display = 'none';
+                return;
+            }
+            
+            const step = tutorialSteps[tutorialStep];
+            document.getElementById('tutorialText').textContent = step.text;
+            document.getElementById('tutorialOverlay').style.display = 'flex';
+        }
+
+        // UI Event Listeners for new systems
+        document.getElementById('openSave').addEventListener('click', () => {
+            document.getElementById('saveMenu').style.display = 'block';
+            // Update save slot info
+            [1, 2, 3].forEach(slot => {
+                const saveData = localStorage.getItem(`cozyGame_save_${slot}`);
+                const infoEl = document.getElementById(`save${slot}Info`);
+                if (saveData) {
+                    const data = JSON.parse(saveData);
+                    infoEl.textContent = `Level ${data.rpgStats.level} - ${new Date(data.timestamp).toLocaleString()}`;
+                } else {
+                    infoEl.textContent = 'Empty';
+                }
+            });
+        });
+
+        document.getElementById('closeSaveMenu').addEventListener('click', () => {
+            document.getElementById('saveMenu').style.display = 'none';
+        });
+
+        document.querySelectorAll('.save-slot-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const slot = btn.dataset.slot;
+                if (confirm('Save or Load? (OK = Save, Cancel = Load)')) {
+                    saveGame(slot);
+                } else {
+                    loadGame(slot);
+                }
+            });
+        });
+
+        document.getElementById('quickSave').addEventListener('click', () => saveGame('quick'));
+        document.getElementById('quickLoad').addEventListener('click', () => loadGame('quick'));
+
+        document.getElementById('openEquipment').addEventListener('click', openEquipmentMenu);
+        document.getElementById('closeEquipment').addEventListener('click', () => {
+            document.getElementById('equipmentMenu').style.display = 'none';
+        });
+
+        document.querySelectorAll('.eq-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.eq-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderEquipment(tab.dataset.tab);
+            });
+        });
+
+        document.getElementById('openSkills').addEventListener('click', openSkillsMenu);
+        document.getElementById('closeSkills').addEventListener('click', () => {
+            document.getElementById('skillsMenu').style.display = 'none';
+        });
+
+        document.getElementById('openCrafting').addEventListener('click', openCraftingMenu);
+        document.getElementById('closeCrafting').addEventListener('click', () => {
+            document.getElementById('craftingMenu').style.display = 'none';
+        });
+
+        document.getElementById('openCooking').addEventListener('click', openCookingMenu);
+        document.getElementById('closeCooking').addEventListener('click', () => {
+            document.getElementById('cookingMenu').style.display = 'none';
+        });
+
+        document.getElementById('openGiftShop').addEventListener('click', openGiftShop);
+        document.getElementById('closeGiftShop').addEventListener('click', () => {
+            document.getElementById('giftShop').style.display = 'none';
+        });
+
+        document.getElementById('nextTutorial').addEventListener('click', () => {
+            tutorialStep++;
+            showTutorialStep();
+        });
+
+        document.getElementById('skipTutorial').addEventListener('click', () => {
+            gameState.tutorialComplete = true;
+            document.getElementById('tutorialOverlay').style.display = 'none';
+        });
+
+        // Add some starting crafting materials
+        rpgStats.craftingMaterials = {
+            paper: 3,
+            ink: 2,
+            wood: 2,
+            glass: 1,
+            thread: 3,
+            beads: 5
+        };
+
+        // Initialize game start time for play time tracking
+        const gameStartTime = Date.now();
+
+        // Start tutorial on first play
+        setTimeout(() => {
+            if (!gameState.tutorialComplete && !localStorage.getItem('cozyGame_save_quick')) {
+                startTutorial();
+            }
+        }, 2000);
+
+        // ===== END OF NEW RPG SYSTEMS =====
 
         ['teddybear', 'flower', 'giftbox', 'steak', 'cake', 'wine', 'letter'].forEach(itemId => {
             document.getElementById(itemId).addEventListener('click', () => {
